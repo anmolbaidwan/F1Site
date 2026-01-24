@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmol's F1 Fan Zone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      color: white;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e10600;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #e10600;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #e10600;
+    }
+
+    .hero {
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('https://robbreport.com/wp-content/uploads/2024/03/1-w-GettyImages-2054922787.jpg') center/cover no-repeat;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      opacity: 0.8;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 60px 40px;
+    }
+
+    .card {
+      background: #151515;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid #e10600;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Anmol's F1 Site</div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="driver.html">Drivers</a>
+      <a href="team.html">Teams</a>
+      <a href="schedule.html">Schedule</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Feel The Speed</h1>
+      <p>The ultimate Formula 1 experience</p>
+    </div>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <a href="driver.html" style="text-decoration:none; color:inherit;">
+      <h3>Top Drivers</h3>
+      <p>View the Standings for the World Driver's Championship</p>
+      </a>
+    </div>
+    <div class="card">
+      <a href="team.html" style="text-decoration:none; color:inherit;">
+      <h3>Elite Teams</h3>
+      <p>View the Standings for the World Constructors's Championship</p>
+      </a>
+    </div>
+    <div class="card">
+      <a href="schedule.html" style="text-decoration:none; color:inherit;">
+      <h3>Race Calendar</h3>
+      <p>Never miss a Grand Prix weekend.</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Anmol's Fan Zone — Not affiliated with Formula 1
+  </footer>
+
+</body>
+
+</html>
