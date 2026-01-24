@@ -60,7 +60,7 @@ for team in sortedbyPoints:
 table_html += "</tbody></table>"
 
 # Read your existing teams.html
-with open("team.html", "r", encoding="utf-8") as f:
+with open("../html/team.html", "r", encoding="utf-8") as f:
     html_content = f.read()
 
 # Inject table at the placeholder
@@ -72,7 +72,7 @@ html_content = re.sub(
 )
 
 # Save the updated HTML
-with open("team.html", "w", encoding="utf-8") as f:
+with open("../html/team.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
 print("team.html updated with new table!")

@@ -60,7 +60,7 @@ for name in sortedbyPoints:
 table_html += "</tbody></table>"
 
 # Read your existing drivers.html
-with open("driver.html", "r", encoding="utf-8") as f:
+with open("../html/driver.html", "r", encoding="utf-8") as f:
     html_content = f.read()
 
 # Inject table at the placeholder
@@ -72,7 +72,7 @@ html_content = re.sub(
 )
 
 # Save the updated HTML
-with open("driver.html", "w", encoding="utf-8") as f:
+with open("../html/driver.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
 print("driver.html updated with new table!")
