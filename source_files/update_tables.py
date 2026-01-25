@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
-subprocess.run(["python", "drivers.py"]) 
-subprocess.run(["python", "teams.py"])
+subprocess.run([sys.executable, "drivers.py"]) 
+subprocess.run([sys.executable, "teams.py"])
