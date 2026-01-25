@@ -73,4 +73,3 @@ with open("../html/driver.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
 print("driver.html updated with new table!")
-# END DDDDDDDDD
