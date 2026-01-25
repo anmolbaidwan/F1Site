@@ -19,16 +19,17 @@ team_logos = {
   "Williams": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/williams/2026williamslogowhite.webp",
   "Kick Sauber": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/audi/2026audilogowhite.webp",
   }
+for i in range(99):
 
-response = urlopen('https://api.openf1.org/v1/championship_teams?session_key=latest')
-data = json.loads(response.read().decode('utf-8'))
-for teamdic in data:
-  points[teamdic["team_name"]] = teamdic["points_current"]
-
-response = urlopen('https://api.openf1.org/v1/drivers?&session_key=latest')
-data = json.loads(response.read().decode('utf-8'))
-for datadic in data:
-  teams[datadic["team_name"]] = datadic["team_colour"]
+    response = urlopen('https://api.openf1.org/v1/drivers?driver_number=' + str(i) + '&session_key=latest')
+    data = json.loads(response.read().decode('utf-8'))
+    if data:
+        datadic = data[0]
+        teams[datadic["team_name"]] = datadic["team_colour"]
+        response = urlopen('https://api.openf1.org/v1/championship_teams?session_key=latest&team_name=' + datadic["team_name"].replace(' ', '%20'))
+        data = json.loads(response.read().decode('utf-8'))
+        teamdic = data[0]
+        points[teamdic["team_name"]] = teamdic["points_current"]
 
 sorted_teams = dict(sorted(teams.items()))
 sortedbyPoints = {k: v for k, v in sorted(points.items(), key=lambda item: item[1], reverse = True)}
