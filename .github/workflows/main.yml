@@ -1,7 +1,6 @@
 name: Update Site after weekend
 
 on:
-  workflow_dispatch: 
   push:
     branches: [ "main" ]
 
@@ -28,7 +27,7 @@ jobs:
 
     - name: Execute Python script
       run: | 
-        python3 src/clean.py # Runs your Python script using the 'python' command
+        python3 src/update_tables.py # Runs your Python script using the 'python' command
     - name: Execute Python script
       run: | 
         git config user.name "github-actions"
