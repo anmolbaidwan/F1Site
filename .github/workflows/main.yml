@@ -27,4 +27,12 @@ jobs:
         if [ -f src/requirements.txt ]; then pip install -r src/requirements.txt; fi # Installs packages from requirements.txt if present
 
     - name: Execute Python script
-      run: python3 src/clean.py # Runs your Python script using the 'python' command
+      run: | 
+        python3 src/clean.py # Runs your Python script using the 'python' command
+    - name: Execute Python script
+      run: | 
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add docs
+        git commit -m "Auto-Update Site"
+        git push
