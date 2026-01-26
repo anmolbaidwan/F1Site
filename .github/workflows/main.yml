@@ -1,25 +1,25 @@
-name: run update_tables.py
+name: py
 
 on:
   schedule:
-    - cron: '* * * * *' # At 00:00 on Monday
+    - cron: "* * * * *"    #runs at 11:30 UTC everyday
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content
-
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
       - name: setup python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.14' # install the python version needed
-
-      - name: install python packages
+          python-version: 3.8 #install the python needed
+          name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            pip install flake8 pytest
+            if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: execute py script # run file
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: execute py script # run main.py
-        run: python3 src/update_tables.py
+          python3 src/update_tables.py
