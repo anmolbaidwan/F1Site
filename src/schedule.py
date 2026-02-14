@@ -2,14 +2,14 @@ from urllib.request import urlopen
 import json
 import re
 
-
+#get all sessions from curr year... not working yet
 response = urlopen('https://api.openf1.org/v1/sessions?year=2026')
 data = json.loads(response.read().decode('utf-8'))
 curr_session = data[0]["meeting_key"]
 
 for session in data:
   if session["meeting_key"] == curr_session:
-     
+     #everything under here is copy pasted from drivers.py
   driver_name[datadic["driver_number"]] = datadic["full_name"].title()
   team_name[datadic["driver_number"]] = datadic["team_name"]
   headshot[datadic["driver_number"]] = datadic["headshot_url"]
