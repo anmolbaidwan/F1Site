@@ -18,14 +18,17 @@ team_logos = {
   "Racing Bulls": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/racingbulls/2026racingbullslogowhite.webp",
   "Red Bull Racing": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/redbullracing/2026redbullracinglogowhite.webp",
   "Williams": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/williams/2026williamslogowhite.webp",
-  "Kick Sauber": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/audi/2026audilogowhite.webp",
   }
 
 #get all teams
 response = urlopen('https://api.openf1.org/v1/championship_teams?session_key=latest')
 data = json.loads(response.read().decode('utf-8'))
-for teamdic in data:
-  points[teamdic["team_name"]] = teamdic["points_current"] #get points
+if data:
+  for teamdic in data:
+    points[teamdic["team_name"]] = teamdic["points_current"] #get points
+else: 
+  for team in team_logos:
+    points[team] = 0 #get points
 
 response = urlopen('https://api.openf1.org/v1/drivers?&session_key=latest') #get all team colors
 data = json.loads(response.read().decode('utf-8'))
