@@ -18,13 +18,14 @@ for datadic in data: #for each list in the API call dictionary, extract Driver N
 
 response = urlopen('https://api.openf1.org/v1/championship_drivers?session_key=latest') #get points for each driver
 data = json.loads(response.read().decode('utf-8'))
-for datadic in data:
-  driver_points[datadic["driver_number"]] = datadic["points_current"]
-
 if data:
-  sortedbyPoints = {k: v for k, v in sorted(driver_points.items(), key=lambda item: item[1], reverse = True)} #sort by points descending
+  for datadic in data:
+    driver_points[datadic["driver_number"]] = datadic["points_current"]
 else:
-  sortedbyPoints = {k: v for k, v in sorted(driver_name.items(), key=lambda item: item[1], reverse = True)} #sort by points descending
+  for datadic in data:
+     driver_points[datadic["driver_number"]] = 0
+sortedbyPoints = {k: v for k, v in sorted(driver_points.items(), key=lambda item: item[1], reverse = True)} #sort by points descending
+
 
 #Initial Table
 table_html = """
