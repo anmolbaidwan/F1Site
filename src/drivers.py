@@ -21,7 +21,10 @@ data = json.loads(response.read().decode('utf-8'))
 for datadic in data:
   driver_points[datadic["driver_number"]] = datadic["points_current"]
 
-sortedbyPoints = {k: v for k, v in sorted(driver_points.items(), key=lambda item: item[1], reverse = True)} #sort by points descending
+if data:
+  sortedbyPoints = {k: v for k, v in sorted(driver_points.items(), key=lambda item: item[1], reverse = True)} #sort by points descending
+else:
+  sortedbyPoints = {k: v for k, v in sorted(driver_name.items(), key=lambda item: item[1], reverse = True)} #sort by points descending
 
 #Initial Table
 table_html = """
