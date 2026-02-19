@@ -17,9 +17,9 @@ for datadic in data: #for each list in the API call dictionary, extract Driver N
   colors[datadic["driver_number"]] = datadic["team_colour"]
 
 response = urlopen('https://api.openf1.org/v1/championship_drivers?session_key=latest') #get points for each driver
-data = json.loads(response.read().decode('utf-8'))
-if data:
-  for datadic in data:
+cdata = json.loads(response.read().decode('utf-8'))
+if cdata:
+  for datadic in cdata:
     driver_points[datadic["driver_number"]] = datadic["points_current"]
 else:
   for datadic in data:
