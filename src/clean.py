@@ -1,10 +1,10 @@
 import re
 
-# Read drivers.html
+# Read your existing drivers.html
 with open("docs/driver.html", "r", encoding="utf-8") as f:
     html_content = f.read()
 
-# Clear Drivers Table
+# Inject table at the placeholder
 html_content = re.sub(
     r'(<div id="drivers-table">).*?(</div>)',
     f"\\1{" "}\\2",
@@ -12,15 +12,15 @@ html_content = re.sub(
     flags=re.DOTALL
 )
 
-# Save cleared drivers.html
+# Save the updated HTML
 with open("docs/driver.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
-# Read teams.html
+# Read your existing teams.html
 with open("docs/team.html", "r", encoding="utf-8") as f:
     html_content = f.read()
 
-# Clear Teams table
+# Inject table at the placeholder
 html_content = re.sub(
     r'(<div id="teams-table">).*?(</div>)',
     f"\\1{" "}\\2",
@@ -28,6 +28,6 @@ html_content = re.sub(
     flags=re.DOTALL
 )
 
-# Save cleared teams.html
+# Save the updated HTML
 with open("docs/team.html", "w", encoding="utf-8") as f:
     f.write(html_content)

@@ -5,7 +5,6 @@ import re
 index = 0
 teams = {}
 points = {}
-#manually got each teams logo, need to find solution
 team_logos = {
   "Alpine": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/alpine/2026alpinelogowhite.webp",
   "Aston Martin": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/astonmartin/2026astonmartinlogowhite.webp",
@@ -20,7 +19,6 @@ team_logos = {
   "Williams": "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000000/common/f1/2026/williams/2026williamslogowhite.webp",
   }
 
-#get all teams
 response = urlopen('https://api.openf1.org/v1/championship_teams?session_key=latest')
 data = json.loads(response.read().decode('utf-8'))
 if data:
@@ -30,15 +28,14 @@ else:
   for team in team_logos:
     points[team] = 0 #get points
 
-response = urlopen('https://api.openf1.org/v1/drivers?&session_key=latest') #get all team colors
+response = urlopen('https://api.openf1.org/v1/drivers?&session_key=latest')
 data = json.loads(response.read().decode('utf-8'))
 for datadic in data:
   teams[datadic["team_name"]] = datadic["team_colour"]
 
 sorted_teams = dict(sorted(teams.items()))
-sortedbyPoints = {k: v for k, v in sorted(points.items(), key=lambda item: item[1], reverse = True)} #sort teams by points
+sortedbyPoints = {k: v for k, v in sorted(points.items(), key=lambda item: item[1], reverse = True)}
 
-#Initial Table
 table_html = """
 <table style="width:100%; border-collapse: separate; border-spacing: 3px; margin-top: 20px;">
   <thead>
@@ -54,7 +51,6 @@ for team in sortedbyPoints:
     image = team_logos[team]
     color = teams[team]
     point = points[team]
-    #add team info to table
     table_html += f"""
       <tr style="text-align:center; background-color:#{color};">
       <th style="border:1px solid #ffffff; padding:12px; width:1%; white-space:nowrap"><img src="{image}" alt="{team}" width="111" style="border-radius:8px;"></th>
@@ -63,14 +59,13 @@ for team in sortedbyPoints:
     </tr>
     """
 
-#finish table off
 table_html += "</tbody></table>"
 
-# Read teams.html
+# Read your existing teams.html
 with open("docs/team.html", "r", encoding="utf-8") as f:
     html_content = f.read()
 
-# Inject table at placeholder
+# Inject table at the placeholder
 html_content = re.sub(
     r'(<div id="teams-table">).*?(</div>)',
     f"\\1{table_html}\\2",
@@ -78,7 +73,7 @@ html_content = re.sub(
     flags=re.DOTALL
 )
 
-# Save teams.html
+# Save the updated HTML
 with open("docs/team.html", "w", encoding="utf-8") as f:
     f.write(html_content)
 
